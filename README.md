@@ -1,52 +1,95 @@
-# Welcome to your Expo app 👋
+# Food Weekly Management
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A React Native (Expo) app to manage food at home: pantry inventory, weekly meal planning, shopping lists, and recipes.
 
-## Get started
+## Features
 
-1. Install dependencies
+- **Calendar** – Weekly/monthly meal planning (lunch, dinner, etc.)
+- **Pantry** – Track food at home (pantry, fridge, freezer) with expiration dates
+- **Shopping List** – Generated from planned meals + manual items
+- **Recipes** – Create, browse, and manage personal recipes
+- **Auth** – Email/password with Firebase (login, register, forgot password)
 
-   ```bash
-   npm install
-   ```
+## Tech Stack
 
-2. Start the app
+- **Expo** (SDK 54) + React Native
+- **Expo Router** – File-based routing
+- **Firebase** – Auth, Firestore, Storage
+- **React Query** – Server state
+- **React Hook Form** + **Yup** – Forms & validation
+- **React Native Paper** – UI components
 
-   ```bash
-   npx expo start
-   ```
+## Project Structure
 
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+```
+src/
+├── app/                    # Routes (Expo Router)
+├── config/                 # Providers, Firebase, React Query
+├── features/               # Feature modules
+│   ├── Auth/
+│   ├── Home/               # Calendar view
+│   ├── MyRecipes/
+│   ├── NewRecipes/
+│   ├── Pantry/
+│   ├── Settings/
+│   └── Shopping/
+├── migrations/             # Data schema migrations
+├── shared/                 # Components, hooks, models, utils
+│   ├── components/
+│   ├── models/
+│   └── utils/
+└── docs/                   # Additional documentation
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Getting Started
 
-## Learn more
+### Prerequisites
 
-To learn more about developing your project with Expo, look at the following resources:
+- Node.js 18+
+- npm or yarn
+- Expo Go (for device testing) or a development build
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+### Install
 
-## Join the community
+```bash
+npm install
+```
 
-Join our community of developers creating universal apps.
+### Firebase Setup
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
-# food_weekly_management
-# food_weekly_management
+1. Create a Firebase project at [console.firebase.google.com](https://console.firebase.google.com)
+2. Enable **Authentication** (Email/Password) and **Firestore**
+3. Replace `src/config/services/firebase/google-services.json` (Android) and `GoogleService-Info.plist` (iOS) with your project config
+4. Update `src/config/services/firebase/firebase-config.ts` with your Firebase config
+
+### Run
+
+```bash
+npx expo start
+```
+
+Then choose:
+
+- **Expo Go** – Scan QR code on device
+- **iOS Simulator** – Press `i` in the terminal
+- **Android Emulator** – Press `a` in the terminal
+
+### Scripts
+
+| Command | Description |
+|---------|-------------|
+| `npm start` | Start Expo dev server |
+| `npm run android` | Run on Android |
+| `npm run ios` | Run on iOS |
+| `npm run web` | Run in browser |
+| `npm run lint` | Run ESLint |
+| `npm run prebuild` | Generate native projects |
+
+## Documentation
+
+- [docs/MIGRATION.md](docs/MIGRATION.md) – Recipe ingredients migration guide
+- [src/migrations/README.md](src/migrations/README.md) – Migration utilities
+
+## License
+
+Private
